@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    Hello, {{ user.firstName }} {{ user.lastName }}
+    <h2>Hello, {{ user.firstName }} {{ user.lastName }}</h2>
     <form @submit.prevent="saveUser">
       <input type="text"
              placeholder="First name"
@@ -43,10 +43,6 @@ export default {
 
     setUser() {
       this.user = Object.assign({}, this.$store.state.user);
-    },
-
-    inputChanged(e) {
-      this.$store.dispatch('saveUser', Object.assign({}, this.user));
     },
   },
 

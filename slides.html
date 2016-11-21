@@ -18,6 +18,14 @@
   </head>
   <body>
     <textarea id="source">
+
+    # Hi
+
+    - I'm Justus Renton
+    - Full stack developer @ <img src="./static/wyzant-logo.png" alt="Wyzant" />
+      - 5 separate VueJS apps on wyzant.com
+
+    ---
     # What is Vuex?
 
     Vuex is a **state management pattern** + library for Vue.js applications. It serves as a **centralized store** for all the components in an application, with rules ensuring that the state can only be **mutated in a predictable fashion**.
@@ -30,7 +38,15 @@
 
     # What is Vuex?
 
-    ![Vuex diagram](vuex.png "Vuex diagram")
+    Vuex is also a way to separate out the state of your application from the views with 3 distinct layers:
+
+    <img src="./static/flow.png" alt="Vuex diagram" style="width: 400px;"/>
+
+    ---
+
+    # What is Vuex?
+
+    ![Vuex diagram](./static/vuex.png "Vuex diagram")
 
     ---
 
@@ -39,6 +55,8 @@
     - Predictable state changes
     - Enforces a structure
     - Larger applications
+
+    <img src="./static/flow.png" alt="Vuex diagram" style="width: 400px;"/>
 
     ---
 
@@ -81,14 +99,6 @@
       el: '#app',
       // Inject the store into the Vue component.
       store,
-      data() {
-        return {
-          user: {
-            firstName: '',
-            lastName: '',
-          },
-        };
-      },
       methods: {
         setUser() {
           this.$store.commit('SET_USER', this.user);
@@ -96,8 +106,6 @@
       },
     });
     ```
-
-    ---
 
     And our html file:
     ```html
@@ -111,9 +119,13 @@
     So now we have the most basic setup to test Vue with Vuex.
     ---
 
-    # Modules
+    # Let's check out some code
 
-    When your application grows, you will find that having one state tree will be cumbersome.
+    ---
+
+    # What about web scale?
+
+    When your application begins to grow, your state, actions, mutations, etc become too large to be manageable. Luckily, Vuex introduces **modules** to solve this problem. Each module has its own state, mutations, actions and getters.
 
     ```javascript
     const moduleA = {
@@ -139,6 +151,37 @@
     store.state.a // -> moduleA's state
     store.state.b // -> moduleB's state
     ```
+
+    ---
+
+    # Architecture with modules
+
+    ```
+    ├── index.html
+    ├── main.js
+    ├── api
+    │   └── ... # abstractions for making API requests
+    ├── components
+    │   ├── App.vue
+    │   └── ...
+    └── store
+        ├── index.js          # where we assemble modules and export the store
+        ├── actions.js        # root actions
+        ├── mutations.js      # root mutations
+        └── modules
+            ├── cart.js       # cart module
+            └── products.js   # products module
+    ```
+
+    ---
+
+    # Other cool Vuexy things
+
+    - [mapState Helper](https://vuex.vuejs.org/en/getters.html#the-mapstate-helper)
+    - [mapGetters Helper](https://vuex.vuejs.org/en/getters.html#the-mapgetters-helper)
+    - [Plugins](https://vuex.vuejs.org/en/plugins.html)
+    - [Testing](https://vuex.vuejs.org/en/testing.html)
+    - [Hot Reloading](https://vuex.vuejs.org/en/hot-reload.html)
 
     </textarea>
     <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js">
