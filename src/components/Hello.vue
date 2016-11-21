@@ -1,10 +1,13 @@
 <template>
   <div class="hello">
-    <form @submit.prevent="setUser">
-      <label>First name:</label>
-      <input type="text" v-model="user.firstName">
-      <label>Last name:</label>
-      <input type="text" v-model="user.lastName">
+    Hello, {{ user.firstName }} {{ user.lastName }}
+    <form @submit.prevent="saveUser">
+      <input type="text"
+             placeholder="First name"
+             v-model="user.firstName">
+      <input type="text"
+             placeholder="Last name"
+             v-model="user.lastName">
       <button type="submit">Set name</button>
     </form>
     <h2>State:</h2>
@@ -16,7 +19,10 @@
 export default {
   data() {
     return {
-      hello: '',
+      // user: {
+      //   firstName: '',
+      //   lastName: '',
+      // },
     };
   },
 
@@ -31,14 +37,25 @@ export default {
   },
 
   methods: {
-    setUser() {
-      this.$store.commit('SET_USER', this.user);
+    saveUser() {
+      this.$store.dispatch('saveUser', Object.assign({}, this.user));
     },
+
+    setUser() {
+      this.user = Object.assign({}, this.$store.state.user);
+    },
+
+    inputChanged(e) {
+      this.$store.dispatch('saveUser', Object.assign({}, this.user));
+    },
+  },
+
+  mounted() {
+    this.setUser();
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
 </style>
