@@ -1,6 +1,6 @@
-# vue-test
+# Vuex presentation for `VueJS` Meetup
 
-> A Vue.js project
+> A Vue project generated from VueJS cli: `vue init webpack vue-test`
 
 ## Build Setup
 

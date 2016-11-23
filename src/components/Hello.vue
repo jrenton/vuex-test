@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h2>Hello, {{ user.firstName }} {{ user.lastName }}</h2>
+    <h2>Hello, {{ userDisplayName }}</h2>
     <form @submit.prevent="saveUser">
       <input type="text"
              placeholder="First name"
@@ -19,10 +19,10 @@
 export default {
   data() {
     return {
-      // user: {
-      //   firstName: '',
-      //   lastName: '',
-      // },
+      user: {
+        firstName: '',
+        lastName: '',
+      },
     };
   },
 
@@ -31,8 +31,8 @@ export default {
       return this.$store.state;
     },
 
-    user() {
-      return this.$store.state.user;
+    userDisplayName() {
+      return this.$store.getters.userDisplayName;
     },
   },
 
@@ -41,6 +41,11 @@ export default {
       this.$store.dispatch('saveUser', Object.assign({}, this.user));
     },
 
+    // setUser assigns the global state 'user' to the local
+    // component's state. This is one of several ways
+    // to sync with your store's state while avoiding
+    // directly mutating it in your form.
+    // See https://vuex.vuejs.org/en/forms.html.
     setUser() {
       this.user = Object.assign({}, this.$store.state.user);
     },
@@ -51,7 +56,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-
-</style>

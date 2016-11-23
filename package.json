@@ -2,7 +2,7 @@
   "name": "vue-test",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "jrenton <jrenton@wyzant.com>",
+  "author": "Justus Renton",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -13,10 +13,6 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
-    "eslint-config-airbnb": "^13.0.0",
-    "eslint-config-google": "^0.7.0",
-    "eslint-plugin-jsx-a11y": "^3.0.1",
-    "eslint-plugin-promise": "^2.0.1",
     "vue": "^2.0.1",
     "vuex": "^2.0.0"
   },
@@ -36,7 +32,7 @@
     "eslint-friendly-formatter": "^2.0.5",
     "eslint-loader": "^1.5.0",
     "eslint-plugin-html": "^1.3.0",
-    "eslint-config-standard": "^6.1.0",
+    "eslint-config-google": "^0.7.0",
     "eslint-plugin-promise": "^2.0.1",
     "eslint-plugin-standard": "^2.0.1",
     "eventsource-polyfill": "^0.9.6",

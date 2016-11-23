@@ -6,6 +6,7 @@ import getters from './getters';
 
 Vue.use(Vuex);
 
+// This will be the state of our application.
 const state = {
   user: {
     firstName: 'Bob',
@@ -15,6 +16,7 @@ const state = {
   isSavingUser: false,
 };
 
+// Mutations are the means by which we mutate the state.
 const mutations = {
   SET_USER(state, user) {
     state.user = user;
@@ -26,6 +28,7 @@ const mutations = {
   },
 };
 
+// Initialize the vuex store.
 export default new Vuex.Store({
   state,
   mutations,

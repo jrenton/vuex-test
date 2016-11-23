@@ -8,58 +8,50 @@
       @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
       @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
 
-      body { font-family: 'Droid Serif'; }
+      body { font-family: 'Droid Serif', 'Helvetica', 'sans-serif'; }
       h1, h2, h3 {
-        font-family: 'Yanone Kaffeesatz';
+        font-family: 'Yanone Kaffeesatz', 'Arial', 'sans-serif';
         font-weight: normal;
+        margin: 0;
       }
-      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono', monospace; }
     </style>
   </head>
   <body>
     <textarea id="source">
 
-    # Hi
+    ### Hi
 
     - Justus Renton
-    - Full stack developer @ <img src="./static/wyzant-logo.png" alt="Wyzant" />
+    - Full stack developer @ <img src="./wyzant-logo.png" alt="Wyzant" />
 
     ---
-    # What is Vuex?
+    ### What is Vuex?
 
-    Vuex is a **state management pattern** + library for Vue.js applications. It serves as a **centralized store** for all the components in an application, with rules ensuring that the state can only be **mutated in a predictable fashion**.
+    - Vuex is a **state management pattern** + library for Vue.js applications.
+    - It serves as a **centralized store** (single source of truth) for all the components in an application.
+    - Has rules ensuring that the state can only be **mutated in a predictable fashion** (read-only).
+    - Enforces a structure with 3 distinct layers:
 
-    - Single source of truth
-    - State is read-only
-    - Only one way to mutate state
-
-    ---
-
-    # What is Vuex?
-
-    Vuex is also a way to separate out the state of your application from the views with 3 distinct layers:
-
-    <img src="./static/flow.png" alt="Vuex diagram" style="width: 400px;"/>
+    <img src="flow.png" alt="Vuex diagram" style="width: 400px;"/>
 
     ---
 
-    # What is Vuex?
+    ### What is Vuex?
 
-    ![Vuex diagram](./static/vuex.png "Vuex diagram")
+    ![Vuex diagram](vuex.png "Vuex diagram")
 
     ---
 
-    # Why use Vuex?
+    ### Why use Vuex?
 
     - Predictable state changes
     - Enforces a structure
-    - Larger applications
-
-    <img src="./static/flow.png" alt="Vuex diagram" style="width: 400px;"/>
+    - Great for larger applications
 
     ---
 
-    # Set up the store
+    ### Set up the store
 
     ```javascript
     import Vue from 'vue';
@@ -91,18 +83,14 @@
 
     ---
 
-    # Inject store into the root component
+    ### Inject store into the root component
 
     ```javascript
     new Vue({
       el: '#app',
       // Inject the store into the Vue component.
+      // Can be accessed via this.$store in all components.
       store,
-      methods: {
-        setUser() {
-          this.$store.commit('SET_USER', this.user);
-        },
-      },
     });
     ```
 
@@ -118,11 +106,11 @@
     So now we have the most basic setup to test Vue with Vuex.
     ---
 
-    # Let's check out some code
+    ### Let's check out some code
 
     ---
 
-    # What about web scale?
+    ### What about web scale?
 
     When your application begins to grow, your state, actions, mutations, etc become too large to be manageable. Luckily, Vuex introduces **modules** to solve this problem. Each module has its own state, mutations, actions and getters.
 
@@ -131,21 +119,20 @@
       state: { ... },
       mutations: { ... },
       actions: { ... },
-      getters: { ... }
-    }
+    };
 
     const moduleB = {
       state: { ... },
       mutations: { ... },
-      actions: { ... }
-    }
+      actions: { ... },
+    };
 
     const store = new Vuex.Store({
       modules: {
         a: moduleA,
-        b: moduleB
-      }
-    })
+        b: moduleB,
+      },
+    });
 
     store.state.a // -> moduleA's state
     store.state.b // -> moduleB's state
@@ -153,7 +140,7 @@
 
     ---
 
-    # Architecture with modules
+    ### Architecture with modules
 
     ```
     ├── index.html
@@ -174,10 +161,13 @@
 
     ---
 
-    # Other cool Vuexy things
+    ### Questions?
 
-    - [mapState Helper](https://vuex.vuejs.org/en/getters.html#the-mapstate-helper)
-    - [mapGetters Helper](https://vuex.vuejs.org/en/getters.html#the-mapgetters-helper)
+    ---
+
+    ### Documentation
+
+    - [View the docs](https://vuex.vuejs.org/)
     - [Plugins](https://vuex.vuejs.org/en/plugins.html)
     - [Testing](https://vuex.vuejs.org/en/testing.html)
     - [Hot Reloading](https://vuex.vuejs.org/en/hot-reload.html)

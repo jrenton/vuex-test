@@ -4,7 +4,7 @@ export default {
       // Simulate an api call.
       setTimeout(() => {
         resolve(user);
-      }, 100);
+      }, 500);
     });
   },
 };

@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <!-- <img src="./assets/logo.png"> -->
+    <h1>Vuex presentation for VueJS Meetup</h1>
+    <div>
+      <a href="/static/slides.html">View slideshow</a>
+    </div>
+    <img src="./assets/logo.png">
     <hello></hello>
   </div>
 </template>
